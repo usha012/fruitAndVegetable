@@ -25,10 +25,10 @@ const Footer = () => {
               </div>
               <div className="col-lg-3">
                 <div className="d-flex justify-content-end pt-3">
-                  <a className="rounded-circle btn btn_md_square btn_outline_secondary p-3 me-2" href="#"><i class="fa-brands fa-twitter"></i></a>
-                  <a className="rounded-circle btn btn_md_square btn_outline_secondary p-3 me-2" href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                  <a className="rounded-circle btn btn_md_square btn_outline_secondary p-3 me-2" href="#"><i class="fa-brands fa-twitter"></i></a>
-                  <a className="rounded-circle btn btn_md_square btn_outline_secondary p-3 me-2" href="#"><i class="fa-brands fa-twitter"></i></a>
+                  <a className="rounded-circle btn btn_md_square btn_outline_secondary p-3 me-2" href="#"><i className="fa-brands fa-twitter"></i></a>
+                  <a className="rounded-circle btn btn_md_square btn_outline_secondary p-3 me-2" href="#"><i className="fa-brands fa-facebook-f"></i></a>
+                  <a className="rounded-circle btn btn_md_square btn_outline_secondary p-3 me-2" href="#"><i className="fa-brands fa-twitter"></i></a>
+                  <a className="rounded-circle btn btn_md_square btn_outline_secondary p-3 me-2" href="#"><i className="fa-brands fa-twitter"></i></a>
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-6 text-white">
-              <span><a href="#"><i class="fa-solid fa-copyright me-2 text_white"></i>Your Site Name</a>, All right reserved.</span>              
+              <span><a href="#"><i className="fa-solid fa-copyright me-2 text_white"></i>Your Site Name</a>, All right reserved.</span>              
             </div>
             <div className="col-lg-6 text-white my-auto text-end">
             Designed By 

@@ -67,3 +67,17 @@
     font-weight: normal;
     transition: .5s;
 }
+@mixin btn-sm( $py:.25rem, $px:.5rem){
+    padding: $py $px;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+@mixin image_outer($width:100px, $height:100px,$objectFit:cover){
+    width:$width;
+    height:$height;
+    img{
+        object-fit:$objectFit;
+        width: 100%;
+        height: 100%;
+    }
+}

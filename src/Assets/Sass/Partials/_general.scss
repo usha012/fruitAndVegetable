@@ -18,14 +18,22 @@
 }
 .btn{
     transition: .5s; 
+    &:focus{
+        box-shadow: 0 0 0 .25rem rgba(129,196,8,.25) !important;
+       
+    }
+
     &.border_secondary{
         &:hover{
             background-color: $bg-secondary;
             color:$text-white;
             box-shadow: none;
+            box-shadow: 0 0 0 .25rem rgba(129,196,8,.25) !important;
         }
+        
     }
 }
+
 .btn_square{
     @include btn-square();
     width: 120px;
@@ -35,6 +43,10 @@
     @include btn-square();
     width: 44px;
     height: 44px;
+}
+
+.btn_sm{
+    @include btn-sm()
 }
 
 // button end
@@ -127,3 +139,17 @@
     line-height: 1.2;
 }
 // line-height end
+// image_outer
+.image_outer_sm_cover{
+    @include image_outer(80px, 80px, $objectFit:cover)
+}
+.image_outer{
+    @include image_outer()
+}
+.image_outer_contain{
+    @include image_outer($objectFit:contain)
+}
+.image_outer_md_contain{
+    @include image_outer(400px,400px,contain)
+}
+

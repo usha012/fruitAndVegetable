@@ -73,7 +73,6 @@ import userEvent from "@testing-library/user-event";
     };
 
     const handleVegPre = ()=>{
-     console.log(carouselRef1) 
      if(carouselRef1.current){
       carouselRef1.current.prev()
      }
@@ -150,7 +149,6 @@ import userEvent from "@testing-library/user-event";
       const response = await fetch("http://localhost:8000/fruits");
       const fruitData = await response.json();
       setFruits(fruitData)
-      console.log(fruitsData);
     }
 
     const vegetablesData = async ()=>{
@@ -185,7 +183,7 @@ import userEvent from "@testing-library/user-event";
                 />
                 <button
                   type="button"
-                  class="btn bg_primary h-100 text_white border_secondary border-2 rounded-pill py-3 px-4 position-absolute top-0 end-0"
+                  className="btn bg_primary h-100 text_white border_secondary border-2 rounded-pill py-3 px-4 position-absolute top-0 end-0"
                 >
                   Submit Now
                 </button>
@@ -198,7 +196,7 @@ import userEvent from "@testing-library/user-event";
                   {...options}
                   ref={carouselRef}
                 >
-                  <div class="item">
+                  <div className="item">
                     <div className="border_rounded_10 overflow-hidden bg_secondary">
                       <img src={heroSlide1} className="h-100 w-100 img-fluid" />
                       <a
@@ -209,7 +207,7 @@ import userEvent from "@testing-library/user-event";
                       </a>
                     </div>
                   </div>
-                  <div class="item">
+                  <div className="item">
                     <div className="border_rounded_10 overflow-hidden">
                       <img src={heroSlide2} className="h-100 w-100 img-fluid" />
                       <a
@@ -225,13 +223,13 @@ import userEvent from "@testing-library/user-event";
                   className="btn carousel_control_pre rounded-circle position-absolute start-0 ms-4"
                   onClick={handlePre}
                 >
-                  <i class="fa-solid fa-chevron-left fa-lg"></i>
+                  <i className="fa-solid fa-chevron-left fa-lg"></i>
                 </button>
                 <button
                   className="btn carousel_control_next rounded-circle position-absolute end-0 me-4"
                   onClick={handleNext}
                 >
-                  <i class="fa-solid fa-chevron-right fa-lg "></i>
+                  <i className="fa-solid fa-chevron-right fa-lg "></i>
                 </button>
               </div>
             </div>
@@ -245,7 +243,7 @@ import userEvent from "@testing-library/user-event";
             <div className="col-3">
               <div className="featurs_item p-4 border_rounded_10 text-center">
                 <div className="featurs_icon btn_square bg_secondary rounded-circle position-relative mb-5 mx-auto">
-                  <i class="fa-solid fa-car-side fa-2xl text-white fs_42"></i>
+                  <i className="fa-solid fa-car-side fa-2xl text-white fs_42"></i>
                 </div>
                 <div className="featurs_content text-center">
                   <h5>Free Shipping</h5>
@@ -256,7 +254,7 @@ import userEvent from "@testing-library/user-event";
             <div className="col-3">
               <div className="featurs_item p-4 border_rounded_10 text-center">
                 <div className="featurs_icon btn_square bg_secondary rounded-circle position-relative mb-5 mx-auto">
-                  <i class="fa-solid fa-user-shield fa-2xl text-white fs_42"></i>
+                  <i className="fa-solid fa-user-shield fa-2xl text-white fs_42"></i>
                 </div>
                 <div className="featurs_content text-center">
                   <h5>Free Shipping</h5>
@@ -267,7 +265,7 @@ import userEvent from "@testing-library/user-event";
             <div className="col-3">
               <div className="featurs_item p-4 border_rounded_10 text-center">
                 <div className="featurs_icon btn_square bg_secondary rounded-circle position-relative mb-5 mx-auto">
-                  <i class="fa-solid fa-exchange-alt fa-2xl text-white fs_42"></i>
+                  <i className="fa-solid fa-exchange-alt fa-2xl text-white fs_42"></i>
                 </div>
                 <div className="featurs_content text-center">
                   <h5>Free Shipping</h5>
@@ -278,7 +276,7 @@ import userEvent from "@testing-library/user-event";
             <div className="col-3">
               <div className="featurs_item p-4 border_rounded_10 text-center">
                 <div className="featurs_icon btn_square bg_secondary rounded-circle position-relative mb-5 mx-auto">
-                  <i class="fa-solid fa-phone-alt fa-2xl text-white fs_42"></i>
+                  <i className="fa-solid fa-phone-alt fa-2xl text-white fs_42"></i>
                 </div>
                 <div className="featurs_content text-center">
                   <h5>Free Shipping</h5>
@@ -580,7 +578,7 @@ import userEvent from "@testing-library/user-event";
                 ref={carouselRef1}
               >
                 { vegetables?.map((veg, i) => (
-                  <div class="item" key={i}>
+                  <div className="item" key={i}>
                     <div className="card_fruit_item">
                       <div className="fruit_img border_rounded_top_10 overflow-hidden">
                         <img
@@ -617,13 +615,13 @@ import userEvent from "@testing-library/user-event";
                 onClick={handleVegPre}
               >
                 {" "}
-                <i class="fa-solid fa-arrow-right"></i>
+                <i className="fa-solid fa-arrow-right"></i>
               </button>
               <button
                 className="btn border_secondary border border_rounded_20 text_primary next"
                 onClick={handleVegNext}
               >
-                <i class="fa-solid fa-arrow-left"></i>{" "}
+                <i className="fa-solid fa-arrow-left"></i>{" "}
               </button>
             </div>
           </div>
@@ -693,11 +691,11 @@ import userEvent from "@testing-library/user-event";
                   <div className="col-6">
                     <a href="#" className="h5">{veg.name}</a>
                     <div className="d-flex my-3">
-                    <i class="fa-solid fa-star text_primary"></i>
-                    <i class="fa-solid fa-star text_primary"></i>
-                    <i class="fa-solid fa-star text_primary"></i>
-                    <i class="fa-solid fa-star text_primary"></i>
-                    <i class="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star text_primary"></i>
+                    <i className="fa-solid fa-star text_primary"></i>
+                    <i className="fa-solid fa-star text_primary"></i>
+                    <i className="fa-solid fa-star text_primary"></i>
+                    <i className="fa-solid fa-star"></i>
                     </div>
                     <h4 className="mb-3">{veg.price}</h4>
                     <a href="#" className="btn border border_secondary rounded-pill px-3 text_primary"> 
@@ -724,11 +722,11 @@ import userEvent from "@testing-library/user-event";
                 <div className="text-center py-4">
                   <a href="#" className="h5">{veg.name}</a>
                   <div className="d-flex justify-content-center my-3">
-                    <i class="fa-solid fa-star text_primary"></i>
-                    <i class="fa-solid fa-star text_primary"></i>
-                    <i class="fa-solid fa-star text_primary"></i>
-                    <i class="fa-solid fa-star text_primary"></i>
-                    <i class="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star text_primary"></i>
+                    <i className="fa-solid fa-star text_primary"></i>
+                    <i className="fa-solid fa-star text_primary"></i>
+                    <i className="fa-solid fa-star text_primary"></i>
+                    <i className="fa-solid fa-star"></i>
                   </div>
                   <h4 className="mb-3">{veg.price}</h4>
                   <a href="#" className="btn border border_secondary rounded-pill px-3 text_primary"> 
@@ -749,7 +747,7 @@ import userEvent from "@testing-library/user-event";
           <div className="row g-4">
             <div className="col-3">
               <div className="counter p-5 border_rounded_10 bg_white">
-                <i class="fa-solid fa-users text_secondary fs_56 mb-3"></i>
+                <i className="fa-solid fa-users text_secondary fs_56 mb-3"></i>
                 <h3 className="text_primary">satisfied customers</h3>
                 <h1>1963</h1>
 
@@ -759,7 +757,7 @@ import userEvent from "@testing-library/user-event";
             </div>
             <div className="col-3">
               <div className="counter p-5 border_rounded_10 bg_white">
-                <i class="fa-solid fa-users text_secondary fs_56 mb-3"></i>
+                <i className="fa-solid fa-users text_secondary fs_56 mb-3"></i>
                 <h3 className="text_primary">quality of service</h3>
                 <h1>99%</h1>
 
@@ -769,7 +767,7 @@ import userEvent from "@testing-library/user-event";
             </div>
             <div className="col-3">
               <div className="counter p-5 border_rounded_10 bg_white">
-                <i class="fa-solid fa-users text_secondary fs_56 mb-3"></i>
+                <i className="fa-solid fa-users text_secondary fs_56 mb-3"></i>
                 <h3 className="text_primary">quality certificates</h3>
                 <h1>33</h1>
 
@@ -779,7 +777,7 @@ import userEvent from "@testing-library/user-event";
             </div>
             <div className="col-3">
               <div className="counter p-5 border_rounded_10 bg_white">
-                <i class="fa-solid fa-users text_secondary fs_56 mb-3"></i>
+                <i className="fa-solid fa-users text_secondary fs_56 mb-3"></i>
                 <h3 className="text_primary">Available Products</h3>
                 <h1>789</h1>
 
@@ -807,12 +805,12 @@ import userEvent from "@testing-library/user-event";
           </div>
           <div className="row position-relative testimonial_carousel py-5 ">
             <div>
-              <button className="next btn rounded-pill border_secondary text_primary position-absolute top-0 end-0" onClick={testNext}><i class="fa-solid fa-arrow-right"></i></button>
-              <button className="pre btn rounded-pill border_secondary text_primary position-absolute top-0" onClick={testPre}><i class="fa-solid fa-arrow-left"></i></button>
+              <button className="next btn rounded-pill border_secondary text_primary position-absolute top-0 end-0" onClick={testNext}><i className="fa-solid fa-arrow-right"></i></button>
+              <button className="pre btn rounded-pill border_secondary text_primary position-absolute top-0" onClick={testPre}><i className="fa-solid fa-arrow-left"></i></button>
             </div>
 
             <OwlCarousel className='owl-theme' {...testimonial} ref={testCarouselRef}>
-              <div class='item'>
+              <div className='item'>
                   <div className="testimonial_item border_rounded_10 bg_light p-4">
                     <div className="position-relative">
                     <i className="fa-solid fa-quote-right fs_39 text_secondary position-absolute bottom-0 end-0"></i>
@@ -828,11 +826,11 @@ import userEvent from "@testing-library/user-event";
                           <h4 className="text_dark">Client Name</h4>
                           <p>Profession</p>
                           <div className="d-flex my-3">
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star"></i>
                           </div>
                         </div>
 
@@ -840,7 +838,7 @@ import userEvent from "@testing-library/user-event";
                     </div>
                   </div>
               </div>
-              <div class='item'>
+              <div className='item'>
               <div className="testimonial_item border_rounded_10 bg_light p-4">
                     <div className="position-relative">
                     <i className="fa-solid fa-quote-right fs_39 text_secondary position-absolute bottom-0 end-0"></i>
@@ -856,11 +854,11 @@ import userEvent from "@testing-library/user-event";
                           <h4 className="text_dark">Client Name</h4>
                           <p>Profession</p>
                           <div className="d-flex my-3">
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star"></i>
                           </div>
                         </div>
 
@@ -868,7 +866,7 @@ import userEvent from "@testing-library/user-event";
                     </div>
                   </div>
               </div>
-              <div class='item'>
+              <div className='item'>
               <div className="testimonial_item border_rounded_10 bg_light p-4">
                     <div className="position-relative">
                     <i className="fa-solid fa-quote-right fs_39 text_secondary position-absolute bottom-0 end-0"></i>
@@ -884,11 +882,11 @@ import userEvent from "@testing-library/user-event";
                           <h4 className="text_dark">Client Name</h4>
                           <p>Profession</p>
                           <div className="d-flex my-3">
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star text_primary"></i>
-                            <i class="fa-solid fa-star"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star text_primary"></i>
+                            <i className="fa-solid fa-star"></i>
                           </div>
                         </div>
 

@@ -8,12 +8,13 @@ import featur1 from "../Assets/Images/featur-1.jpg";
 import featur2 from "../Assets/Images/featur-2.jpg";
 import featur3 from "../Assets/Images/featur-3.jpg";
 import bannerFruit from "../Assets/Images/banner-fruits.jpg";
+import ReactPaginate from 'react-paginate';
 
 const VegetableShop = () => {
     const options = [
         { value: '', label: 'Nothing'},
         { value: 'organic', label: 'organic'},
-        { value: 'fresh', label: 'fresh' },
+        { value: 'fresh', label: 'fresh' }, 
     ];
 
 
@@ -22,8 +23,6 @@ const VegetableShop = () => {
     const [filteredFruits, setFilteredFruits] = useState([])
     // const [minValue, set_minValue] = useState();
     // const [maxValue, set_maxValue] = useState();
-    // const [selectedOption, setSelectedOption] = useState(options[0]);
-    // console.log(selectedOption.value,"selcted")
 
 
     const handleInput = (e) => { 
@@ -46,6 +45,7 @@ const VegetableShop = () => {
     }
 
     const fruit = useSelector((state)=> state.fruits)
+    console.log(fruit, "777777")
     // const fruitsData = async()=>{
     //     const response = await axios.get("http://localhost:8000/all");
     //     setFruits(response.data)
@@ -66,7 +66,7 @@ const VegetableShop = () => {
             console.log(11111)
         }
         if(filterObj?.type){
-            console.log(22222)
+            console.log(filterObj.type,"22222")
             productData = productData.filter((el, index)=>(
                 el.type === filterObj.type
             ))   
@@ -90,9 +90,19 @@ const VegetableShop = () => {
             // }
             
         if(filterObj?.sorting?.value){
-            console.log(33333)
+            console.log(filterObj.sorting, "33333")
             productData= productData.filter((el,index)=>(
                 el?.additioal === filterObj?.sorting?.value
+            ))
+            console.log(productData, "44444")
+        }
+        if(filterObj?.additioal)
+        
+        {
+            console.log(filterObj.additioal, "44444")
+            productData= productData.filter((el,index)=>(
+                el?.additioal === filterObj?.additioal
+
             ))
         }
        
@@ -106,9 +116,31 @@ const VegetableShop = () => {
 
     const handleChange = (e)=>{
         setFilterObj({...filterObj, [e.target.name]: e.target.value})    
-        
     }
 
+    // pagination
+    // Here we use item offsets; we could also use page offsets
+    // following the API or data you're working with.
+    const [itemOffset, setItemOffset] = useState(0);
+    const itemsPerPage = 6
+    // Simulate fetching items from another resources.
+    // (This could be items from props; or items loaded in a local state
+    // from an API endpoint with useEffect and useState)
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    const currentItems = filteredFruits.slice(itemOffset, endOffset);
+    const pageCount = Math.ceil(filteredFruits.length / itemsPerPage);
+    // Invoke when user click to request another page.
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % filteredFruits.length;
+        console.log(
+        `User requested page number ${event.selected}, which is offset ${newOffset}`
+        );
+        setItemOffset(newOffset);
+    };
+
+
+    // useEffect
     useEffect(()=>{
       handleData()
     }, [filterObj])
@@ -134,15 +166,15 @@ const VegetableShop = () => {
                 <div className='col-lg-12'>
                   <div className='row g-4 justify-content-between'>
                     <div className='col-lg-3'>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control p-3 rounded_start_10" placeholder="Search, Name, Color, Type" name="search" onChange={(e)=>handleChange(e)} />
-                            <span class="input-group-text p-3 rounded_end_10" ><i class="fa-solid fa-magnifying-glass text_dark fw_900"></i></span>
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control p-3 rounded_start_10" placeholder="Search, Name, Color, Type" name="search" onChange={(e)=>handleChange(e)} />
+                            <span className="input-group-text p-3 rounded_end_10" ><i className="fa-solid fa-magnifying-glass text_dark fw_900"></i></span>
                         </div>
                     </div>
                     <div className='col-lg-3'>
                         <div className='rounded bg_light d-flex justify-content-between ps-3 py-3 mb-4'>
                             <lable>Default Sorting:</lable>
-                            {/* <select class="form-select w-auto border-0 sorting">
+                            {/* <select className="form-select w-auto border-0 sorting">
                                 <option selected>Nothing</option>
                                 <option value="fresh">Fresh</option>
                                 <option value="organic">Organic</option>
@@ -159,7 +191,7 @@ const VegetableShop = () => {
 
                     </div>
                   </div>
-                  <div className='row g-4'>
+                  <div className='row g-5'>
                     <div className='col-3 shop_sidebar'>
                         <div className='row g-4'>
                             <div className='col-lg-12'>
@@ -169,30 +201,30 @@ const VegetableShop = () => {
                                         <li>
                                             <div className='d-flex justify-content-between fruit_name'>
                                                 <Link to=""  onClick={(e)=>setFilterObj({...filterObj, type:""})}>
-                                                <i class="fa-solid fa-apple-whole me-2"></i>
+                                                <i className="fa-solid fa-apple-whole me-2"></i>
                                                 All
                                                 </Link>
-                                                <span>(3)</span>
+                                                <span>{filteredFruits?.length}</span>
 
                                             </div>
                                         </li>
                                         <li>
                                             <div className='d-flex justify-content-between fruit_name'>
                                                 <Link to="" onClick={(e)=>setFilterObj({...filterObj, type:"fruit"})}>
-                                                <i class="fa-solid fa-apple-whole me-2"></i>
+                                                <i className="fa-solid fa-apple-whole me-2"></i>
                                                 Fruits
                                                 </Link>
-                                                <span>(3)</span>
+                                                <span>{filteredFruits?.filter(el => el.type === "fruit")?.length}</span>
 
                                             </div>
                                         </li>
                                         <li>
                                             <div className='d-flex justify-content-between fruit_name'>
                                                 <Link to="" onClick={(e)=>setFilterObj({...filterObj, type:"vegetable"})}>
-                                                <i class="fa-solid fa-apple-whole me-2"></i>
+                                                <i className="fa-solid fa-apple-whole me-2"></i>
                                                 Vegetables
                                                 </Link>
-                                                <span>(3)</span>
+                                                <span>{filteredFruits?.filter(el => el.type === "vegetable")?.length}</span>
 
                                             </div>
                                         </li>
@@ -204,10 +236,10 @@ const VegetableShop = () => {
                                 <div className='mb-3'>
                                     <h4 className='mb-2'>Price</h4>
                                     {/* <p>Min Price</p>
-                                    <input type="range" class="form-range" id="customRange2" value={filterObj?.minRange} name="minRange" onChange={(e)=>handleChange(e)}></input>
+                                    <input type="range" className="form-range" id="customRange2" value={filterObj?.minRange} name="minRange" onChange={(e)=>handleChange(e)}></input>
                                     <p>{filterObj.minRange}</p>
                                     <p>Max Price</p>
-                                    <input type="range" class="form-range" id="customRange2" value={filterObj?.maxRange} name="maxRange" onChange={(e)=>handleChange(e)}></input>
+                                    <input type="range" className="form-range" id="customRange2" value={filterObj?.maxRange} name="maxRange" onChange={(e)=>handleChange(e)}></input>
                                     <p>{filterObj?.maxRange}</p> */}
 
                                     <MultiRangeSlider
@@ -235,34 +267,34 @@ const VegetableShop = () => {
                                 <div className='mb-3'>
                                     <h4>Additional</h4>
                                     <div className='mb-2'>
-                                        <input class="form-check-input rounded-circle me-2" type="radio"  name="organic" checked={filterObj.additioal === "organic"} onClick={(e)=>setFilterObj({...filterObj, additioal:"organic"})}  />
+                                        <input className="form-check-input rounded-circle me-2" type="radio"  name="organic" checked={filterObj.additioal === "organic"} onClick={(e)=>setFilterObj({...filterObj, additioal:"organic"})}  />
                                         
-                                        <label class="form-check-label"  >
+                                        <label className="form-check-label"  >
                                             Organic
                                         </label>
                                     </div>
                                     <div className='mb-2'>
-                                        <input class="form-check-input rounded-circle me-2" type="radio" name="fresh" checked={filterObj.additioal === "fresh"}  onClick={(e)=>setFilterObj({...filterObj, additioal:"fresh"})} />
-                                        <label class="form-check-label">
+                                        <input className="form-check-input rounded-circle me-2" type="radio" name="fresh" checked={filterObj.additioal === "fresh"}  onClick={(e)=>setFilterObj({...filterObj, additioal:"fresh"})} />
+                                        <label className="form-check-label">
                                             Fresh
                                         </label>
                                     </div>
                                     <div className='mb-2'>
-                                        <input class="form-check-input rounded-circle me-2" type="radio" value="" name='' checked={filterObj.additioal === ""} onClick={(e)=>setFilterObj({...filterObj, additioal:""})} />
-                                        <label class="form-check-label">
+                                        <input className="form-check-input rounded-circle me-2" type="radio" value="" name='' checked={filterObj.additioal === ""} onClick={(e)=>setFilterObj({...filterObj, additioal:""})} />
+                                        <label className="form-check-label">
                                             All
                                         </label>
                                     </div>
                                     
                                     {/* <div className='mb-2'>
-                                        <input class="form-check-input rounded-circle me-2" type="checkbox" value="" />
-                                        <label class="form-check-label">
+                                        <input className="form-check-input rounded-circle me-2" type="checkbox" value="" />
+                                        <label className="form-check-label">
                                             Discount
                                         </label>
                                     </div>
                                     <div className='mb-2'>
-                                        <input class="form-check-input rounded-circle me-2" type="checkbox" value="" />
-                                        <label class="form-check-label">
+                                        <input className="form-check-input rounded-circle me-2" type="checkbox" value="" />
+                                        <label className="form-check-label">
                                             Expired
                                         </label>
                                     </div> */}
@@ -279,11 +311,11 @@ const VegetableShop = () => {
                                     <div>
                                         <h6 className='mb-2'>Big Banana</h6>
                                         <div className="d-flex mb-2">
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star"></i>
                                         </div>
                                         <div className='d-flex mb-2'>
                                             <h5 className='fw_bold me-2'>2.99 $</h5>
@@ -299,11 +331,11 @@ const VegetableShop = () => {
                                     <div>
                                         <h6 className='mb-2'>Big Banana</h6>
                                         <div className="d-flex mb-2">
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star"></i>
                                         </div>
                                         <div className='d-flex mb-2'>
                                             <h5 className='fw_bold me-2'>2.99 $</h5>
@@ -319,11 +351,11 @@ const VegetableShop = () => {
                                     <div>
                                         <h6 className='mb-2'>Big Banana</h6>
                                         <div className="d-flex mb-2">
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star"></i>
                                         </div>
                                         <div className='d-flex mb-2'>
                                             <h5 className='fw_bold me-2'>2.99 $</h5>
@@ -352,61 +384,88 @@ const VegetableShop = () => {
                     </div>
                     <div className='col-9'>
                         <div className='row g-4'>
-                          {
-                                filteredFruits.map((fruit, index) => (
+                            {
+                                currentItems?.length === 0
+                                ?
+                                <div className='d-flex justify-content-center align-items-center'>
+                                <h1 className='mb-0 text_primary'>No Data Found</h1>
+                                </div>
+                                :
+                                currentItems.map((fruit, index) => (
                                     <div className="col-4 text-center" key={index}>
-                                        <div className="card_fruit_item position-relative">
-                                            <div className="fruit_img border_rounded_top_10 overflow-hidden">
-                                            <img
-                                                src={fruit.image}
-                                                className="img-fluid border_rounded_top_10"
-                                            />
-                                            </div>
-                                            <div className="border border_secondary border-top-0 border_rounded_bottom_10 p-4">
-                                            <h4>{fruit.name}</h4>
-                                            <p>{fruit.description}</p>
-                                            <div className="d-flex justify-content-between">
-                                                <p className="text-gray-600 fw_600 fs_19 mb-0">
-                                                {fruit.price}$
-                                                </p>
-                                                <a
-                                                href="#"
-                                                className="rounded-pill btn border px-3 border_secondary text_primary"
-                                                >
-                                                <i className="fa fa-shopping-bag me-3 fa-lg text_primary"></i>
-                                                Add to cart
-                                                </a>
-                                            </div>
-                                            </div>
-                                            <div className='rounded-pill border_rounded_top_10 bg_secondary text_white position-absolute top-0 end-0 px-3 py-4'>
-                                                <h5 className='mb-0 text_white text-capitalize'>{fruit.additioal}</h5>
+                                        <Link to={`/productdetail/${fruit.id}`}>
+                                            <div className="card_fruit_item position-relative">
+                                                <div className="fruit_img border_rounded_top_10 overflow-hidden">
+                                                <img
+                                                    src={fruit.image}
+                                                    className="img-fluid border_rounded_top_10"
+                                                />
+                                                </div>
+                                                <div className="border border_secondary border-top-0 border_rounded_bottom_10 p-4">
+                                                <h4>{fruit.name}</h4>
+                                                <p>{fruit.description}</p>
+                                                <div className="d-flex justify-content-between">
+                                                    <p className="text-gray-600 fw_600 fs_19 mb-0">
+                                                    {fruit.price}$
+                                                    </p>
+                                                    <a
+                                                    href="#"
+                                                    className="rounded-pill btn border px-3 border_secondary text_primary"
+                                                    >
+                                                    <i className="fa fa-shopping-bag me-3 fa-lg text_primary"></i>
+                                                    Add to cart
+                                                    </a>
+                                                </div>
+                                                </div>
+                                                <div className='rounded-pill border_rounded_top_10 bg_secondary text_white position-absolute top-0 end-0 px-3 py-4'>
+                                                    <h5 className='mb-0 text_white text-capitalize'>{fruit.additioal}</h5>
 
+                                                </div>
                                             </div>
-                                        </div>
+                                        </Link>
                                     </div>
                                 ))
 
                             }
-                            
-
-                           
-
-                           
+   
                         </div>
                         <div className='row g-4'>
                             <div className='col-12'>
-                                <div className='pegination d-flex justify-content-center align-items-center mt-5'>
-                                    <a href='#' className='border border_secondary border_rounded_10'><i class="fa-solid fa-angles-left fa-2xs"></i></a>
+                                <ReactPaginate
+                                    breakLabel="..."
+                                    nextLabel={<i className="fa-solid fa-angles-right fa-2xs"></i>}
+                                    onPageChange={handlePageClick}
+                                    pageRangeDisplayed={5}
+                                    pageCount={pageCount}
+                                    previousLabel={<i className="fa-solid fa-angles-left fa-2xs"></i>}
+                                    renderOnZeroPageCount={null}
+
+                                    // breakClassName={'page-item'}
+                                    // breakLinkClassName={'page-link'}
+                                    containerClassName={'pegination d-flex justify-content-center align-items-center mt-5'}
+                                    pageClassName={' border border_secondary border_rounded_10'}
+                                    // pageLinkClassName={'page-link'}
+                                    previousClassName={' border border_secondary border_rounded_10'}
+                                    // previousLinkClassName={'page-link'}
+                                    nextClassName={' border border_secondary border_rounded_10'}
+                                    // nextLinkClassName={'page-link'}
+                                    // activeClassName={'active'}
+                                />
+
+
+
+                                {/* <div className='pegination d-flex justify-content-center align-items-center mt-5'>
+                                    <a href='#' className='border border_secondary border_rounded_10'><i className="fa-solid fa-angles-left fa-2xs"></i></a>
                                     <a href='#' className='border border_secondary border_rounded_10 active'>1</a>
                                     <a href='#' className='border border_secondary border_rounded_10'>2</a>
                                     <a href='#' className='border border_secondary border_rounded_10'>3</a>
                                     <a href='#' className='border border_secondary border_rounded_10'>4</a>
                                     <a href='#' className='border border_secondary border_rounded_10'>5</a>
                                     <a href='#' className='border border_secondary border_rounded_10'>6</a>
-                                    <a href='#' className='border border_secondary border_rounded_10'><i class="fa-solid fa-angles-right fa-2xs"></i></a>
+                                    <a href='#' className='border border_secondary border_rounded_10'><i className="fa-solid fa-angles-right fa-2xs"></i></a>
+                                </div> */}
 
 
-                                </div>
 
                             </div>
    

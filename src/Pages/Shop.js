@@ -105,15 +105,15 @@ const Shop = () => {
                 <div className='col-lg-12'>
                   <div className='row g-4 justify-content-between'>
                     <div className='col-lg-3'>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control p-3 rounded_start_10" value={dataFilter?.search} placeholder="Keywords" name="search" onChange={(e)=>handleFilterData(e)} />
-                            <span class="input-group-text p-3 rounded_end_10" onClick={()=>handleSearch()}><i class="fa-solid fa-magnifying-glass text_dark fw_900"></i></span>
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control p-3 rounded_start_10" value={dataFilter?.search} placeholder="Keywords" name="search" onChange={(e)=>handleFilterData(e)} />
+                            <span className="input-group-text p-3 rounded_end_10" onClick={()=>handleSearch()}><i className="fa-solid fa-magnifying-glass text_dark fw_900"></i></span>
                         </div>
                     </div>
                     <div className='col-lg-3'>
                         <div className='rounded bg_light d-flex justify-content-between ps-3 py-3 mb-4'>
                             <lable>Default Sorting:</lable>
-                            <select class="form-select w-auto border-0 sorting">
+                            <select className="form-select w-auto border-0 sorting">
                                 <option selected>Nothing</option>
                                 <option value="1">Popularity</option>
                                 <option value="2">Organic</option>
@@ -134,7 +134,7 @@ const Shop = () => {
                                         <li>
                                             <div className='d-flex justify-content-between fruit_name'>
                                                 <Link to="" onClick={()=>setDataFilter({...dataFilter, type:""})}>
-                                                <i class="fa-solid fa-apple-whole me-2"></i>
+                                                <i className="fa-solid fa-apple-whole me-2"></i>
                                                 All
                                                 </Link>
                                                 <span>(3)</span>
@@ -144,7 +144,7 @@ const Shop = () => {
                                         <li>
                                             <div className='d-flex justify-content-between fruit_name'>
                                                 <Link to="" onClick={()=>setDataFilter({...dataFilter, type: "fruit"})} name="type">
-                                                <i class="fa-solid fa-apple-whole me-2"></i>
+                                                <i className="fa-solid fa-apple-whole me-2"></i>
                                                 Fruits
                                                 </Link>
                                                 <span>(3)</span>
@@ -154,7 +154,7 @@ const Shop = () => {
                                         <li>
                                             <div className='d-flex justify-content-between fruit_name'>
                                                 <Link to="" onClick={()=>setDataFilter({...dataFilter, type: "vegetable"})} name="type">
-                                                <i class="fa-solid fa-apple-whole me-2"></i>
+                                                <i className="fa-solid fa-apple-whole me-2"></i>
                                                 Vegetables
                                                 </Link>
                                                 <span>(3)</span>
@@ -168,7 +168,7 @@ const Shop = () => {
                             <div className='col-lg-12'>
                                 <div className='mb-3'>
                                     <h4 className='mb-2'>Price</h4>
-                                    <input type="range" class="form-range" value={dataFilter?.range} min="0" max="100" name="range" onChange={(e)=>handleFilterData(e)} id="customRange2"></input>
+                                    <input type="range" className="form-range" value={dataFilter?.range} min="0" max="100" name="range" onChange={(e)=>handleFilterData(e)} id="customRange2"></input>
                                     <p>{JSON.stringify(dataFilter)}</p>
                                 </div>
                             </div>
@@ -176,32 +176,32 @@ const Shop = () => {
                                 <div className='mb-3'>
                                     <h4>Additional</h4>
                                     <div className='mb-2'>
-                                        <input class="form-check-input rounded-circle me-2" type="radio" checked={dataFilter?.name === "organic"} value="" name="organic" onClick={()=>setDataFilter({...dataFilter, name:"organic"})} />
-                                        <label class="form-check-label">
+                                        <input className="form-check-input rounded-circle me-2" type="radio" checked={dataFilter?.name === "organic"} value="" name="organic" onClick={()=>setDataFilter({...dataFilter, name:"organic"})} />
+                                        <label className="form-check-label">
                                             Organic
                                         </label>
                                     </div>
                                     <div className='mb-2'>
-                                        <input class="form-check-input rounded-circle me-2" type="radio" checked={dataFilter?.name === "fresh"} value="" name="fresh" onClick={()=>setDataFilter({...dataFilter, name:"fresh"})} />
-                                        <label class="form-check-label">
+                                        <input className="form-check-input rounded-circle me-2" type="radio" checked={dataFilter?.name === "fresh"} value="" name="fresh" onClick={()=>setDataFilter({...dataFilter, name:"fresh"})} />
+                                        <label className="form-check-label">
                                             Fresh
                                         </label>
                                     </div>
                                     <div className='mb-2'>
-                                        <input class="form-check-input rounded-circle me-2" type="radio" value=""  checked={dataFilter?.name === ""}  name="" onClick={()=>setDataFilter({...dataFilter, name:""})} />
-                                        <label class="form-check-label">
+                                        <input className="form-check-input rounded-circle me-2" type="radio" value=""  checked={dataFilter?.name === ""}  name="" onClick={()=>setDataFilter({...dataFilter, name:""})} />
+                                        <label className="form-check-label">
                                             All
                                         </label>
                                     </div>
                                     {/* <div className='mb-2'>
-                                        <input class="form-check-input rounded-circle me-2" type="checkbox" value="" />
-                                        <label class="form-check-label">
+                                        <input className="form-check-input rounded-circle me-2" type="checkbox" value="" />
+                                        <label className="form-check-label">
                                             Discount
                                         </label>
                                     </div>
                                     <div className='mb-2'>
-                                        <input class="form-check-input rounded-circle me-2" type="checkbox" value="" />
-                                        <label class="form-check-label">
+                                        <input className="form-check-input rounded-circle me-2" type="checkbox" value="" />
+                                        <label className="form-check-label">
                                             Expired
                                         </label>
                                     </div> */}
@@ -218,11 +218,11 @@ const Shop = () => {
                                     <div>
                                         <h6 className='mb-2'>Big Banana</h6>
                                         <div className="d-flex mb-2">
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star"></i>
                                         </div>
                                         <div className='d-flex mb-2'>
                                             <h5 className='fw_bold me-2'>2.99 $</h5>
@@ -238,11 +238,11 @@ const Shop = () => {
                                     <div>
                                         <h6 className='mb-2'>Big Banana</h6>
                                         <div className="d-flex mb-2">
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star"></i>
                                         </div>
                                         <div className='d-flex mb-2'>
                                             <h5 className='fw_bold me-2'>2.99 $</h5>
@@ -258,11 +258,11 @@ const Shop = () => {
                                     <div>
                                         <h6 className='mb-2'>Big Banana</h6>
                                         <div className="d-flex mb-2">
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star text_secondary"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star text_secondary"></i>
+                                        <i className="fa-solid fa-star"></i>
                                         </div>
                                         <div className='d-flex mb-2'>
                                             <h5 className='fw_bold me-2'>2.99 $</h5>
@@ -341,14 +341,14 @@ const Shop = () => {
                         <div className='row g-4'>
                             <div className='col-12'>
                                 <div className='pegination d-flex justify-content-center align-items-center mt-5'>
-                                    <a href='#' className='border border_secondary border_rounded_10'><i class="fa-solid fa-angles-left fa-2xs"></i></a>
+                                    <a href='#' className='border border_secondary border_rounded_10'><i className="fa-solid fa-angles-left fa-2xs"></i></a>
                                     <a href='#' className='border border_secondary border_rounded_10 active'>1</a>
                                     <a href='#' className='border border_secondary border_rounded_10'>2</a>
                                     <a href='#' className='border border_secondary border_rounded_10'>3</a>
                                     <a href='#' className='border border_secondary border_rounded_10'>4</a>
                                     <a href='#' className='border border_secondary border_rounded_10'>5</a>
                                     <a href='#' className='border border_secondary border_rounded_10'>6</a>
-                                    <a href='#' className='border border_secondary border_rounded_10'><i class="fa-solid fa-angles-right fa-2xs"></i></a>
+                                    <a href='#' className='border border_secondary border_rounded_10'><i className="fa-solid fa-angles-right fa-2xs"></i></a>
 
 
                                 </div>

@@ -273,6 +273,62 @@
   }
 }
 // footer end
+// pegination start
+.pegination a {
+  padding: 10px 16px;
+  color:$text-gray-600;
+  transition: 0.5s;
+  margin: 0 4px;
+  &.active, &:hover{
+    background-color: $bg-primary;
+  }
+}
+.pegination li {
+  padding: 11px 1px;
+  color:$text-gray-600;
+  transition: 0.5s;
+  margin: 0 4px;
+  &.active, &:hover{
+    background-color: $bg-primary;
+  }
+}
+// pegination end
+// sidebar start
+.shop_sidebar{
+  .fruit_categorie{
+    .fruit_name{
+      line-height: 40px;
+    }
+  }
+  .feature_img{
+    width: 100px;
+    height: 100px;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  } 
+  .bannerFruit_text{
+    top:50%;
+    right:10px;
+    transform:translateY(-50%);
+  }
+  .multiSlider{
+    border: none;
+    box-shadow: none;
+    padding: 15px 10px;
+  }
+  .multi-range-slider .thumb::before{
+    box-shadow: none;
+    border: 0px;
+  }
+  .multi-range-slider .bar-inner{
+    border: 0px;
+    box-shadow: none;
+  }
+}
+// sidebar end
 
 // shop page start
 .page_header{
@@ -288,52 +344,36 @@
       box-shadow: none;
     }
   }
-  .shop_sidebar{
-    .fruit_categorie{
-      .fruit_name{
-        line-height: 40px;
-      }
-    }
-    .feature_img{
-      width: 100px;
-      height: 100px;
-      img{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-    } 
-    .bannerFruit_text{
-      top:50%;
-      right:10px;
-      transform:translateY(-50%);
-    }
-  }
-  .pegination a{
-    padding: 10px 16px;
-    color:$text-gray-600;
-    transition: 0.5s;
-    margin: 0 4px;
-    &.active, &:hover{
-      background-color: $bg-primary;
-    }
-  }
-  .multiSlider{
-    border: none;
-    box-shadow: none;
-    padding: 15px 10px;
-  }
-  .multi-range-slider .thumb::before{
-    box-shadow: none;
-    border: 0px;
-  }
-  .multi-range-slider .bar-inner{
-    border: 0px;
-    box-shadow: none;
-  }
-
-
-    
-    
 }
+//product details start
+.quantity{
+  width: 105px;
+}
+.productDetails_tab {
+  .nav-tabs{
+    .nav-link{
+       border: none !important;
+       border-bottom: 2px solid transparent !important;
+       transition: all;
+       &:hover{
+        color:$text-primary;
+       }
+    }
+    .nav-link.active{
+      // border: none !important;
+      // ~.active{
+        border-bottom: 2px solid $bg-secondary !important;
+        color:$text-gray-600;
+        // background-color: $bg-primary;
+      // }
+    }
+  }
+}
+//product details end
+ 
+
+
+
+    
+    
 // shop page end

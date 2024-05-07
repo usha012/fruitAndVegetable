@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom"
+import Cart from '../Pages/Cart'
 
 const Header = () => {
   return (
@@ -14,16 +15,18 @@ const Header = () => {
 
       </div>
       <div className='top_links pe-2'>
-      <a href="#" class="text_white"><small class="text_white mx-2">Privacy Policy</small>/</a>
-      <a href="#" class="text_white"><small class="text_white mx-2">Terms of Use</small>/</a>
-      <a href="#" class="text_white"><small class="text_white ms-2">Sales and Refunds</small></a>
+      <a href="#" className="text_white"><small className="text_white mx-2">Privacy Policy</small>/</a>
+      <a href="#" className="text_white"><small className="text_white mx-2">Terms of Use</small>/</a>
+      <a href="#" className="text_white"><small className="text_white ms-2">Sales and Refunds</small></a>
 
       </div>
     </div>
     
   </div>
+</div>
+<div className='container-fluid sticky-top bg-white'>
   <div className='container'>
-    <nav className="navbar navbar-expand-lg main_navbar bg-white">
+    <nav className="navbar navbar-expand-lg main_navbar bg-white ">
       <div className="container-fluid">
         <a className="navbar-brand" href="#"><h1 className='text_primary fs_37 fw_800'> Fruitables</h1></a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,17 +60,17 @@ const Header = () => {
               <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>
           </ul>
-          <form class="d-flex">
+          <form className="d-flex">
             <button className='search_btn border_secondary btn me-4'>
-              <i class="fa-solid fa-magnifying-glass text_primary"></i>
+              <i className="fa-solid fa-magnifying-glass text_primary"></i>
             </button>
 
-            <a href='#' className='position-relative  me-4 my-auto'>
-            <i class="fa-solid fa-bag-shopping fa-2xl text_primary"></i>
+            <Link to="/cart" className='position-relative  me-4 my-auto'>
+            <i className="fa-solid fa-bag-shopping fa-2xl text_primary"></i>
             <span className='shopping_count position-absolute text_dark bg_secondary p-0 rounded-circle d-flex justify-content-center align-items-center btn_badge'>3</span>
-            </a>
+            </Link>
             <a href="#" className='my-auto'>
-            <i class="fa-solid fa-user fa-2xl text_primary"></i>
+            <i className="fa-solid fa-user fa-2xl text_primary"></i>
             </a>
           </form> 
         </div>
