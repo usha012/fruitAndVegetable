@@ -19,14 +19,6 @@ const ProductDetail = () => {
     const params = useParams();
     console.log(params, "pramssssssss")
 
-    // const productData = async()=>{
-    //     const response = await axios.get("http://localhost:8000/all");
-    //     const filteredData  = response?.data?.filter((data, index)=>data?.id == params?.id)
-    //     console.log(filteredData,'99999')
-    //     setProductDetails(filteredData)
-    // }
-
-    // const allData = useSelector((stateww)=> state.fruits)
 
     const dispatch = useDispatch()
 
@@ -40,20 +32,9 @@ const ProductDetail = () => {
 
         console.log(filteredData,'99999')
 
-        
-
-        // console.log(filterSlider,"ssssssss")
-        // setSliderData(filterSlider)
-    
-        // const filterSlider = allData?.filter(()=> )
-        // console.log(filterSlider,"gggggggggg")
         setProductDetails(filteredData)
     }
 
-    // const sliderData =()=>{
-    //     const filteredData  = allData?.filter((data, index)=>data?.type == )
-    //     console.log(productDetails, "slidersss")
-    // }
 
 
 
@@ -73,7 +54,6 @@ const ProductDetail = () => {
     useEffect(()=>{
        productData()
       
-    //    sliderData()
     },[allData])
 
    

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import Card from "../Components/Card";
 
 import Header from "../Components/Header";
 import heroSlide1 from "../Assets/Images/hero-img-1.png";
@@ -26,11 +27,13 @@ import testimonial1 from "../Assets/Images/testimonial-1.jpg";
 import userEvent from "@testing-library/user-event";
 
 
-  const Home = () => {
+  const Home = (props) => {
 
     const [fruits, setFruits] = useState([]);
     const [vegetables, setVegetables] = useState([]);
     const [tab, setTab] = useState("allProducts");
+
+    const {image, name, description, price} = props
 
 
     const handleClickFruit=(select)=>{
@@ -352,60 +355,14 @@ import userEvent from "@testing-library/user-event";
               <div className="row g-4 mb-4">
               {fruits.slice(0, 8).map((fruit, index) => (
                 <div className="col-3 text-center">
-                  <div className="card_fruit_item">
-                    <div className="fruit_img border_rounded_top_10 overflow-hidden">
-                      <img
-                        src={fruit.image}
-                        className="img-fluid border_rounded_top_10"
-                      />
-                    </div>
-                    <div className="border border_secondary border-top-0 border_rounded_bottom_10 p-4">
-                      <h4>{fruit.name}</h4>
-                      <p>{fruit.description}</p>
-                      <div className="d-flex justify-content-between">
-                        <p className="text-gray-600 fw_600 fs_19 mb-0">
-                          {fruit.price}
-                        </p>
-                        <a
-                          href="#"
-                          className="rounded-pill btn border px-3 border_secondary text_primary"
-                        >
-                          <i className="fa fa-shopping-bag me-3 fa-lg text_primary"></i>
-                          Add to cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <Card  data={fruit} />
                 </div>
               ))} 
               </div>
               <div className="row g-4">
               {vegetables.slice(0,8).map((veg, index) => (
                 <div className="col-3 text-center">
-                  <div className="card_fruit_item">
-                    <div className="fruit_img border_rounded_top_10 overflow-hidden">
-                      <img
-                        src={veg.image}
-                        className="img-fluid border_rounded_top_10"
-                      />
-                    </div>
-                    <div className="border border_secondary border-top-0 border_rounded_bottom_10 p-4">
-                      <h4>{veg.name}</h4>
-                      <p>{veg.description}</p>
-                      <div className="d-flex justify-content-between">
-                        <p className="text-gray-600 fw_600 fs_19 mb-0">
-                          {veg.price}
-                        </p>
-                        <a
-                          href="#"
-                          className="rounded-pill btn border px-3 border_secondary text_primary"
-                        >
-                          <i className="fa fa-shopping-bag me-3 fa-lg text_primary"></i>
-                          Add to cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                   <Card data={veg} />
                 </div>
               ))} 
               </div>
@@ -418,30 +375,7 @@ import userEvent from "@testing-library/user-event";
               <div className="row g-4">
               {fruits.slice(0, 8).map((fruit, index) => (
                 <div className="col-3 text-center">
-                  <div className="card_fruit_item">
-                    <div className="fruit_img border_rounded_top_10 overflow-hidden">
-                      <img
-                        src={fruit.image}
-                        className="img-fluid border_rounded_top_10"
-                      />
-                    </div>
-                    <div className="border border_secondary border-top-0 border_rounded_bottom_10 p-4">
-                      <h4>{fruit.name}</h4>
-                      <p>{fruit.description}</p>
-                      <div className="d-flex justify-content-between">
-                        <p className="text-gray-600 fw_600 fs_19 mb-0">
-                          {fruit.price}
-                        </p>
-                        <a
-                          href="#"
-                          className="rounded-pill btn border px-3 border_secondary text_primary"
-                        >
-                          <i className="fa fa-shopping-bag me-3 fa-lg text_primary"></i>
-                          Add to cart
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <Card data={fruit} />
                 </div>
               ))} 
               </div>:
@@ -579,7 +513,7 @@ import userEvent from "@testing-library/user-event";
               >
                 { vegetables?.map((veg, i) => (
                   <div className="item" key={i}>
-                    <div className="card_fruit_item">
+                    {/* <div className="card_fruit_item">
                       <div className="fruit_img border_rounded_top_10 overflow-hidden">
                         <img
                           src={veg.image}
@@ -602,7 +536,8 @@ import userEvent from "@testing-library/user-event";
                           </a>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
+                    <Card data={veg} />
                   </div>
                 ))}
               </OwlCarousel>

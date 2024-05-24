@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import vegetableItem from '../Assets/Images/vegetable-item-3.png'
-import { addToCart, removeItem, deleteCartItem } from '../Redux/cartSlice'
+import { addToCart, removeItem, deleteCartItem, emptyCart } from '../Redux/cartSlice'
 import { useSelector, useDispatch } from 'react-redux'
+import { addOrder } from '../Redux/ordersSlice'
+import { Link } from 'react-router-dom'
 
 
 
@@ -12,6 +14,20 @@ const Cart = () => {
     console.log( useSelector(state => state.cartItems),"cartttttt4444444444 ")
     const dispatch = useDispatch()
 
+    const totalPrice = cart?.reduce((acuu, curr)=> acuu + Number(curr.price) * Number(curr.itemQty),0 )
+    console.log(totalPrice, "priceeeee")
+    console.log(cart, "art5555555")
+
+    const handleAddToOrders = ()=>{
+        dispatch(addOrder(cart))
+        dispatch(emptyCart())
+
+    }
+
+ 
+// useEffect(()=>{
+    
+// })
    
   return (
     <>
@@ -86,35 +102,30 @@ const Cart = () => {
             <div className='row g-4 justify-content-end'>
                 <div className='col-4'>
                     <div className='bg_light rounded'>
-                        {
-                            cart.map((el,i)=>(
-                                <>
+                      
 
                                 <div className='p-4'>
                                     <h1 className='mb-4 fw_700'>Cart <span className='fw_normal'>Total</span></h1>
                                     <div className='d-flex justify-content-between mb-4'>
                                         <h5 className='mb-0 me-4'>Subtotal:</h5>
-                                        <p className='mb-0'>{el?.price}</p>
+                                        <p className='mb-0'>{totalPrice}</p>
                                     </div>
                                     <div className='d-flex justify-content-between'>
                                         <h5 className='mb-0 me-4'>Shipping</h5>
                                         <p className='mb-0'>Flat rate: $3.00</p>
                                     </div>
-                                    <p className='text-end'>Shipping to Ukraine.</p>
+                                    <p className='text-end'>Shipping to India.</p>
                                 </div>
 
 
                                 <div className='border-top border-bottom py-4 mb-4 d-flex justify-content-between'>
                                     <h5 className='mb-0 ps-4 me-4'>Total</h5>
-                                    <p className='mb-0 pe-4'>$99.00</p>
+                                    <p className='mb-0 pe-4'>{`$${totalPrice}`}</p>
                                 </div>
-
-                        </>
-                            ))
-                        }
                         
-                        <button className='btn border_secondary rounded-pill px-4 py-3 text_primary text-uppercase mb-4 ms-4' type='button'>Proceed Checkout</button>
-
+                      <Link to="/Orders"> 
+                      <button className='btn border_secondary rounded-pill px-4 py-3 text_primary text-uppercase mb-4 ms-4' type='button' onClick={()=>handleAddToOrders()}>Proceed Checkout</button>
+                      </Link>            
                     </div>
 
                 </div>

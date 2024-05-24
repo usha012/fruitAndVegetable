@@ -174,12 +174,6 @@ const VegetableShop = () => {
                     <div className='col-lg-3'>
                         <div className='rounded bg_light d-flex justify-content-between ps-3 py-3 mb-4'>
                             <lable>Default Sorting:</lable>
-                            {/* <select className="form-select w-auto border-0 sorting">
-                                <option selected>Nothing</option>
-                                <option value="fresh">Fresh</option>
-                                <option value="organic">Organic</option>
-                                <option value="3">Fantastic</option>
-                            </select> */}
                             <Select
                                 defaultValue={filterObj?.sorting}
                                 onChange={(e)=>handleSelect(e)}
@@ -369,7 +363,6 @@ const VegetableShop = () => {
 
                                 </div>
                             </div>
-
                             <div className='col-lg-12'>
                                 <div className='position-relative'>
                                     <img src={bannerFruit} className='img-fluid w-100 border_rounded_10'/>
@@ -454,22 +447,8 @@ const VegetableShop = () => {
 
 
 
-                                {/* <div className='pegination d-flex justify-content-center align-items-center mt-5'>
-                                    <a href='#' className='border border_secondary border_rounded_10'><i className="fa-solid fa-angles-left fa-2xs"></i></a>
-                                    <a href='#' className='border border_secondary border_rounded_10 active'>1</a>
-                                    <a href='#' className='border border_secondary border_rounded_10'>2</a>
-                                    <a href='#' className='border border_secondary border_rounded_10'>3</a>
-                                    <a href='#' className='border border_secondary border_rounded_10'>4</a>
-                                    <a href='#' className='border border_secondary border_rounded_10'>5</a>
-                                    <a href='#' className='border border_secondary border_rounded_10'>6</a>
-                                    <a href='#' className='border border_secondary border_rounded_10'><i className="fa-solid fa-angles-right fa-2xs"></i></a>
-                                </div> */}
-
-
 
                             </div>
-   
-
                         </div>
 
                     </div>

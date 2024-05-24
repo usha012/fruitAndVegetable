@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 import ProductDetail from './Pages/ProductDetail';
 // import { addFeatureProduct } from './Redux/productSlice';
 import Cart from './Pages/Cart';
+import Orders from './Pages/Orders';
 
 function App() {
   const dispatch = useDispatch()
@@ -44,6 +45,7 @@ function App() {
         <Route path='/shop' element={<Shop/>}/>
         <Route path='/vegetableshop' element={<VegetableShop/>}/>
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/orders' element={<Orders/>}/>
         <Route path='/productdetail/:id' element={<ProductDetail/>}/>
 
 

@@ -292,6 +292,9 @@
     background-color: $bg-primary;
   }
 }
+.pegination li.selected{
+  background-color: $bg-primary;
+}
 // pegination end
 // sidebar start
 .shop_sidebar{
@@ -377,3 +380,22 @@
     
     
 // shop page end
+
+// orders
+.accordion-button:focus{
+  box-shadow: none;
+
+}
+.accordion-button:not(.collapsed) {
+  color: #8d8d8e;
+  background-color: #eaeaea;
+}
+.order_list {
+  tbody{
+    tr:last-child{
+       border-bottom: transparent;
+    }
+
+  }
+
+}
